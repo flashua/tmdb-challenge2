@@ -1,26 +1,26 @@
 const apiKey = `66683917a94e703e14ca150023f4ea7c`;
+const mockyApiKey = `ed4bd5c7-0971-4ce8-add9-8b68b1ce081c`;
+const headers = { Accept: "application/json" };
 let stage;
 
-export const init = (stageInstance) =>{
-    stage = stageInstance;
+const get = async url => {
+  try {
+    const response = await fetch(url, { headers });
+    return await response.json();
+  } catch (e) {
+    console.error(e);
+  }
 };
 
-
-/**
- * @todo:
- * call get with the correct url
- * https://api.themoviedb.org/3/movie/popular
- * and return the data
- */
-export const getMovies = async()=> {
-
+export const init = stageInstance => {
+  stage = stageInstance;
 };
 
-const get = (url)=> {
-    return fetch(url, {
-        'Accept': 'application/json'
-    }).then(response => {
-        return response.json();
-    })
+export const getMovies = () => get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
+
+export const getVodMenu = () => get(`https://run.mocky.io/v3/${mockyApiKey}`);
+
+export const getImgUrl = (uri) => {
+  return `https://image.tmdb.org/t/p/w220_and_h330_face${uri}`
 };
 

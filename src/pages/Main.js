@@ -1,37 +1,29 @@
-import {Lightning} from 'wpe-lightning-sdk';
-import {List} from "../components"
+import { Lightning, Router } from "wpe-lightning-sdk";
+import { Lists, Logo } from "../components";
 
-export default class Main extends Lightning.Component{
-    static _template() {
-        return {
-            scale:0.5,
-            Lists: {
-                x: 100, y: 560, zIndex: 3
-            },
-            // @todo: add logo
-        };
-    }
+export default class Main extends Lightning.Component {
+  static _template() {
+    return {
+      Lists: {
+        type: Lists,
+        x: 100,
+        y: 500,
+        zIndex: 3
+      },
+      Logo: {
+        type: Logo
+      }
+    };
+  }
 
-    _init() {
-        this._index = 0; 
-    }
+  set movies(moviesData) {
+    this.tag("Lists").label = "Popular";
+    this.tag("Lists").movies = moviesData;
+  }
 
-    _focus() {
+  _getFocused() {
+    return this.tag("Lists");
+  }
 
-    }
-
-    /**
-     * @todo: add set movies() that will be called by the data-provider
-     * inside set movies create new List child and call it's movies setter
-     * and hand over the movies
-     */
-
-    _unfocus() {
-        // @todo
-    }
-
-    _getFocused() {
-        // @todo: delegate focus to List child
-    }
 
 }

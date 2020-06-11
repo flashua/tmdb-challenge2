@@ -26,3 +26,16 @@ During development you can use the **watcher** functionality of the _Lightning-C
 #### Documentation
 
 Use `lng docs` to open up the Lightning-SDK documentation.
+
+#### Tasks
+
+The goal is to:
+- Fix all the @todo's
+- Make the API work
+- Use the page router to navigate to Main
+- Create the list
+- Add the list to the template
+
+#### Tips: 
+
+Router: https://github.com/rdkcentral/Lightning-SDK/blob/feature/router/docs/plugins/router.md
